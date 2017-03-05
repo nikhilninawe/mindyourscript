@@ -8,6 +8,24 @@ public class JobDetailEntry {
 	private String status;
 	private String lastResponse;
 	private String lastRunTime;
+	private String schedule;
+	private String scriptName;
+	
+	
+	
+	
+	public String getScriptName() {
+		return scriptName;
+	}
+	public void setScriptName(String scriptName) {
+		this.scriptName = scriptName;
+	}
+	public String getSchedule() {
+		return schedule;
+	}
+	public void setSchedule(String schedule) {
+		this.schedule = schedule;
+	}
 	public String getName() {
 		return name;
 	}

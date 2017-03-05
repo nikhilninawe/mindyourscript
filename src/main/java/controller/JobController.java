@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import core.ShellExecutor;
+import core.*;
 import db.Job;
 import db.JobDetail;
 import db.JobDetailEntry;
 import repository.JobDetailRepository;
 import repository.JobRepository;
+
 
 @RestController
 public class JobController {
@@ -30,7 +31,7 @@ public class JobController {
 	@Autowired
 	private TaskScheduler scheduler;
 
-//	@PostConstruct
+	@PostConstruct
 	public void init() {
 		try {
 			schedule();
@@ -69,6 +70,8 @@ public class JobController {
 			entry.setLastRunTime(jd.getLastRunTime().toString());
 			entry.setLastResponse(jd.getResult());
 			entry.setStatus(jd.getStatus());
+			entry.setSchedule(j.getSchedule());
+			entry.setScriptName(j.getFileName());
 			entries.add(entry);
 		}
 		return entries;
